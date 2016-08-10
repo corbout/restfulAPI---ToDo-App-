@@ -43,7 +43,7 @@ app.get('/todos/:id', function(req, res) {
 })
 ```
 
-- Refactored POST todos/:id with underscore. Easier to pick exactly what you need with .pick underscore 
+- Refactored POST todos/:id with underscore. Easier to pick exactly what you need with .pick underscore
 ```javascript
 app.post('/todos', function(req, res){
     var body = _.pick(req.body, 'description', 'completed');
@@ -56,5 +56,26 @@ app.post('/todos', function(req, res){
 
         todos.push(body)
         res.json(body)
+})
+```
+
+- Created DELETE todos/:id with underscore
+- Returns a copy of the array with all instances of the values removed
+=> .without([1, 2, 1, 0, 3, 1, 4], 0, 1);
+=> [2, 3, 4]
+
+```javascript
+app.delete('/todos/:id', function(req, res){
+  var todoId = parseInt(req.params.id);
+  var matchedTodo = _.findWhere(todos, {id: todoId});
+  // negative, if it does not work/find match res
+  if (!matchedTodo) {
+    res.status(404).json({"error": "No ToDo Found."})
+  }
+  else {
+    // .without, the first argument is the array name & second argument is the values that we want removed. Which in this case is the matchedTodo
+    todos = _.without(todos, matchedTodo);
+  }
+  res.json(matchedTodo);
 })
 ```

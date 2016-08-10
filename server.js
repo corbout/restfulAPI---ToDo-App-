@@ -66,6 +66,19 @@ app.post('/todos', function(req, res){
         res.json(body)
 })
 
+app.delete('/todos/:id', function(req, res){
+  var todoId = parseInt(req.params.id);
+  var matchedTodo = _.findWhere(todos, {id: todoId});
+  // negative, if it does not work/find match res
+  if (!matchedTodo) {
+    res.status(404).json({"error": "No ToDo Found."})
+  }
+  else {
+    todos = _.without(todos, matchedTodo);
+  }
+  res.json(matchedTodo);
+})
+
 app.get('/about', middleware.logger, function(req, res) {
   res.send('<h1>Express About Page</h1>')
 })
