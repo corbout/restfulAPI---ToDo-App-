@@ -28,3 +28,17 @@
 - created POST //todos
 first, intilized id
 then we first had to require the body
+
+- Refactored todos/:id with underscore
+```js
+app.get('/todos/:id', function(req, res) {
+  var todoId = parseInt(req.params.id);
+  var matchToDo = _.findWhere(todos, {id: todoId})
+    if (matchToDo) {
+      res.json(matchToDo);
+    }
+    else {
+      res.status(404).send();
+    }
+})
+```
