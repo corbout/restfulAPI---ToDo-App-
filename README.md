@@ -14,3 +14,5 @@
 - Created a custom middleware
 - app.use(objectName.key) to use middleware throughout the app (globally)
 - app.get('/', can put middleware here, anonymous function)
+
+- to use code from another place in the folder, you must first require it in the file you need it and also module.exports from the file you're exporting it from
