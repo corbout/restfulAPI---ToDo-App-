@@ -14,5 +14,11 @@
 - Created a custom middleware
 - app.use(objectName.key) to use middleware throughout the app (globally)
 - app.get('/', can put middleware here, anonymous function)
+- What is requiring a module and then how do I mount it
+  - example npm install body-parser --save
+  - require it at the top => var bodyParser = require('body-parser')
+  - app.use('moduleName'()) example => app.use(bodyParser()) <= bodyParser() allows it to be used throughout the whole app
 
 - to use code from another place in the folder, you must first require it in the file you need it and also module.exports from the file you're exporting it from
+
+- created 1st GET /todos & tested it with POSTMAN by creating a Collection -> Environment -> Route
