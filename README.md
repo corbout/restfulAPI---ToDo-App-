@@ -22,3 +22,9 @@
 - to use code from another place in the folder, you must first require it in the file you need it and also module.exports from the file you're exporting it from
 
 - created 1st GET /todos & tested it with POSTMAN by creating a Collection -> Environment -> Route
+
+- created 2nd GET /todos/:id & tested with POSTMAN and pushed to heroku and created -Environment->Route, learned that POSTMAN is useful to test your API
+
+- created POST //todos
+first, intilized id
+then we first had to require the body
